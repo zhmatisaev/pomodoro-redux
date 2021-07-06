@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/pomodoro-redux/static/css/main.d5f5de6a.chunk.css",
+    "main.js": "/pomodoro-redux/static/js/main.3ed62148.chunk.js",
+    "main.js.map": "/pomodoro-redux/static/js/main.3ed62148.chunk.js.map",
+    "runtime-main.js": "/pomodoro-redux/static/js/runtime-main.ab728ed2.js",
+    "runtime-main.js.map": "/pomodoro-redux/static/js/runtime-main.ab728ed2.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/pomodoro-redux/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.6756ef34.chunk.js": "/pomodoro-redux/static/js/2.6756ef34.chunk.js",
+    "static/js/2.6756ef34.chunk.js.map": "/pomodoro-redux/static/js/2.6756ef34.chunk.js.map",
+    "index.html": "/pomodoro-redux/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/pomodoro-redux/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.d5f5de6a.chunk.css.map": "/pomodoro-redux/static/css/main.d5f5de6a.chunk.css.map",
+    "static/js/2.6756ef34.chunk.js.LICENSE.txt": "/pomodoro-redux/static/js/2.6756ef34.chunk.js.LICENSE.txt",
+    "static/media/finished.b35b538c.mp3": "/pomodoro-redux/static/media/finished.b35b538c.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ab728ed2.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.6756ef34.chunk.js",
+    "static/css/main.d5f5de6a.chunk.css",
+    "static/js/main.3ed62148.chunk.js"
+  ]
+}
