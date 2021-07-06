@@ -1,3 +1,6 @@
+
+
+
 import {
   SAVE_TIME,
   START_TIME,
@@ -6,48 +9,39 @@ import {
   STOP_TIME,
   RESET_TIME,
   SHORT_BREAK,
-  LONG_BREAK
+  LONG_BREAK,
 } from "../action/action";
-
-// const local = JSON.parse(localStorage.getItem("time"));
-localStorage.removeItem("time")
-
+const local = JSON.parse(localStorage.getItem("time"));
+// localStorage.removeItem("time")
 const initialState = {
-  shortBreak: 2,
-  // length25 : 1,
+  shortBreak: 5,
   longBreak: 10,
-  count: 3,
+  count: 4,
   minuteSecond: 1500,
+  sessionLength: 25,
   timerRunning: false,
   interval: "Session",
-  button: false
+  button: false,
 };
-
-// session: state.session === 3600 ? state.session : state.userSetSession + 60,
-// userSetSession: state.userSetSession === 3600 ? state.userSetSession : state.userSetSession + 60
-
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_TIME:
-      // console.log(shortBreak);
       return {
         ...state,
         shortBreak: action.obj.shortBreak,
         longBreak: action.obj.longBreak,
         minuteSecond: action.obj.minuteSecond * 60,
-
-        // interval: 'Session'
-        //  count: state.count,
+        sessionLength: action.obj.sessionLength,
+        count: action.obj.count,
       };
     case START_TIME:
       return {
         ...state,
-        button: true,
         timerRunning: true,
-        interval: "Session"
+        button: true,
+        interval: "Session",
       };
     case DECREASE_TIME:
-      console.log("decrease");
       return {
         ...state,
         minuteSecond: state.minuteSecond - 1,
@@ -57,43 +51,37 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         timerRunning: false,
       };
-
     case RESET_TIME:
       return {
         ...state,
-        shortBreak: 5,
-                length25: 1,
-                interval: 'Session',
-                minuteSecond: 25 * 60,
-                timerRunning: false,
-                button: false,
-
-        // ...state,
-        // minuteSecond: state.minuteSecond,
-        // timerRunning: false,
-      };
-
-    case SWITCH_SESSION:
-      return {
-        ...state,
+        shortBreak: action.obj.shortBreak,
+        longBreak: action.obj.longBreak,
+        minuteSecond: action.obj.minuteSecond * 60,
+        sessionLength: action.obj.sessionLength,
+        count: action.obj.count,
+        timerRunning: false,
         interval: "Session",
-        minuteSecond: state.minuteSecond * 60,
+        button: false,
       };
-    
     case SHORT_BREAK:
       return {
         ...state,
         interval: "Break",
         minuteSecond: state.shortBreak * 60,
       };
-
-      case LONG_BREAK:
-        return {
-          ...state,
-          interval: "Break",
-          minuteSecond: state.longBreak * 60,
-        }
+    case LONG_BREAK:
+      return {
+        ...state,
+        interval: "LongBreak",
+        minuteSecond: state.longBreak * 60,
+      };
+    case SWITCH_SESSION:
+      return {
+        ...state,
+        interval: "Session",
+        minuteSecond: state.sessionLength * 60,
+      };
     default:
       return state;
   }
-}
+};

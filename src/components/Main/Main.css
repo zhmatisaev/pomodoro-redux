@@ -3,3 +3,8 @@
     width: 900px;
     height: 640px;
     margin:  auto}
+
+    .button{
+        background-color: rgb(238, 180, 180);
+        border-radius: 2em;
+    }
