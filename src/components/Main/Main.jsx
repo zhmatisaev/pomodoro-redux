@@ -1,9 +1,4 @@
 
-
-
-
-
-
 import React, {useState} from 'react'
 import './Main.css'
 import TimerLayout from '../TimerLayout/TimerLayout'
@@ -48,11 +43,12 @@ function Main() {
         if (timerRunning && minuteSecond > 0) {
             count = setInterval(() => {
                 dispatch(decrease_time())
-        }, 100)
+        }, 1000)
         } else if (timerRunning && minuteSecond === 0) {
             audio.play();
         if (interval === 'Session') {
             dispatch(short_Break());
+            console.log(short_Break)
                 res();
         }
         else if (interval === "Break" && minuteSecond===0) {
@@ -71,13 +67,14 @@ function Main() {
         }
         return ()=> clearInterval(count)
     },[audio, timerRunning, minuteSecond, interval, switchSession, decrease_time, short_Break, long_Break, count1, setCount1])
-let obj = {
-    shortBreak: shortBreak1,
-    longBreak: longBreak1,
-    minuteSecond: minute,
-    sessionLength: minute,
-    countFromStore: countFromStore,
-  };
+    let obj = {
+        shortBreak: shortBreak1,
+        longBreak: longBreak1,
+        minuteSecond: minute,
+        sessionLength: minute,
+        countFromStore: countFromStore,
+      };
+
     return (
         <>
             <div>
@@ -87,17 +84,17 @@ let obj = {
                 <div>
                     <span><Info/> </span>
                     <span><Settings
-                        minuteSecond={minuteSecond}
-                        longBreak={longBreak1}
-                        setLongBreak1={setLongBreak1}
-                        shortBreak={shortBreak1}
-                        setShortBreak1={setShortBreak1}
-                        minute={minute}
-                        minutes={minutes}
-                        setMinute={setMinute}
-                        obj={obj}
-                        setCount1={setCount1}
-                            count1={count1}
+                         minuteSecond={minuteSecond}
+                         longBreak={longBreak1}
+                         setLongBreak1={setLongBreak1}
+                         shortBreak={shortBreak1}
+                         setShortBreak1={setShortBreak1}
+                         minute={minute}
+                         minutes={minutes}
+                         setMinute={setMinute}
+                         obj={obj}
+                         setCount1={setCount1}
+                             count1={count1}
                     /></span>
                 </div>
             </div>

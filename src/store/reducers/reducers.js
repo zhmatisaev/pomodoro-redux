@@ -1,6 +1,5 @@
 
 
-
 import {
   SAVE_TIME,
   START_TIME,
@@ -11,18 +10,22 @@ import {
   SHORT_BREAK,
   LONG_BREAK,
 } from "../action/action";
-const local = JSON.parse(localStorage.getItem("time"));
-// localStorage.removeItem("time")
+
+// const local = JSON.parse(localStorage.getItem("time"));
+localStorage.removeItem("time")
+
 const initialState = {
   shortBreak: 5,
   longBreak: 10,
-  count: 4,
+  count: 3,
   minuteSecond: 1500,
   sessionLength: 25,
   timerRunning: false,
   interval: "Session",
   button: false,
 };
+
+// export const rootReducer = (state = initialState ? local : [], action) => {
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_TIME:
@@ -39,7 +42,7 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         timerRunning: true,
         button: true,
-        interval: "Session",
+        interval: "Session"
       };
     case DECREASE_TIME:
       return {
@@ -51,6 +54,7 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         timerRunning: false,
       };
+
     case RESET_TIME:
       return {
         ...state,
@@ -63,25 +67,29 @@ export const rootReducer = (state = initialState, action) => {
         interval: "Session",
         button: false,
       };
+    
     case SHORT_BREAK:
       return {
         ...state,
         interval: "Break",
         minuteSecond: state.shortBreak * 60,
       };
+
     case LONG_BREAK:
       return {
         ...state,
         interval: "LongBreak",
         minuteSecond: state.longBreak * 60,
       };
+
     case SWITCH_SESSION:
       return {
         ...state,
         interval: "Session",
         minuteSecond: state.sessionLength * 60,
       };
+
     default:
       return state;
   }
-};
+}
